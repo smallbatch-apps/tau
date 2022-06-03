@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/smallbatch-apps/tau#readme",
   "bin": {
-    "tau": "./index.js"
+    "tau-cli": "./index.js"
   },
   "dependencies": {
     "chalk": "^3.0.0",
