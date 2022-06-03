@@ -98,3 +98,5 @@ For example: `npx tau-cli extract OrderBook api -cs`
 The simplest way to set up is to use npx.
 
 The documented commands above can be used in the format `npx tau-cli <command>`. This will install the package and then run the comands.
+
+Another option that does not require the NPM package is to use `npm link`. To do this, check out this repository and in the local directory run the command `npm link`. This command will install the package as a global command, so you can run as `tau-cli <command>` instead of `npx tau-cli`.
