@@ -45,10 +45,10 @@ const extractFiles = (fileName, key, cmd) => {
 
   const fileJson = JSON.parse(fileContent);
 
-  if (key === "api") {
+  if (key === "seeder") {
     let { abi, contractName, bytecode } = fileJson;
 
-    const apiBody = {
+    const seederBody = {
       contractName,
       description: `${contractName} Contract`,
       identifier: contractName.toLowerCase(),
@@ -58,13 +58,13 @@ const extractFiles = (fileName, key, cmd) => {
 
     if (toClipBoard) {
       var proc = require("child_process").spawn("pbcopy");
-      proc.stdin.write(JSON.stringify(apiBody, null, 2));
+      proc.stdin.write(JSON.stringify(seederBody, null, 2));
       proc.stdin.end();
-      console.log(chalk.green("API request body copied to clipboard"));
+      console.log(chalk.green("Seeder request body copied to clipboard"));
     }
     if (!silentMode) {
       console.log(
-        chalk.whiteBright(JSON.stringify({ contract: apiBody }, null, 2))
+        chalk.whiteBright(JSON.stringify({ contract: seederBody }, null, 2))
       );
     }
 

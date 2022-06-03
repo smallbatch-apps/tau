@@ -24,7 +24,7 @@ The AST is not used directly by a very large number of applications, but it **do
 
 ## The tau API and Usage
 
-### compress
+### tau-cli compress
 
 Intended to squash down the Truffle artifact for web application usage in a web3 app by removing object keys that are large and typically not useful for web apps. These include bytecode (which is only needed for deployment) and large AST and source keys.
 
@@ -56,7 +56,7 @@ Note that tau does not actually care whether they are truffle output files, it w
 
 `npx tau-cli compress -i ./ -o compressed` - Will compress all truffle build files, but retain the original and put new versions in `/build/contracts/compressed`
 
-### extract
+### tau-cli extract \<filename\> \<key\>
 
 The extract command pulls out whatever object keys are required from the artifact. This is a good way to grab the abi of a contract, for example. It is only suitable for usage on a single file.
 
@@ -73,11 +73,13 @@ An interesting feature is that the extract command actually doesn't care if it's
 
 `npx tau-cli extract TokenCoin abi -c` - Copy the ABI from tokencoin contract to the clipboard.
 
-`npx tau-cli extract MonkeyMinter bytecode -wcs` - Copy the bytecode from the monkey minter contract and strip whitespace and escape the string. This may be needed for pasting into - for example - a validator. Unlike above this will not show the extracted output on the screen, useful for long values like this.
+`npx tau-cli extract MonkeyMinter.json bytecode -wcs` - Copy the bytecode from the monkey minter contract and strip whitespace and escape the string. This may be needed for pasting into - for example - a validator. Unlike above this will not show the extracted output on the screen, useful for long values like this.
 
-_The api key_
+> Note that the .json part of the file is optional
 
-There is an internal use flag of `api`. This will return an object consisting of the contract name, a description ("contractName + Contract"), an identifier (lowercase contractName), the ABI and the bytecode.
+_The seeder key_
+
+There is an internal use flag of `seeder`. This will return an object consisting of the contract name, a description ("contractName + Contract"), an identifier (lowercase contractName), the ABI and the bytecode.
 
 ```
 {
@@ -86,7 +88,7 @@ There is an internal use flag of `api`. This will return an object consisting of
     identifier: "tokencoin",
     abi: "[{"inputs": [{"internalType": "string","name":...",
     bytecode: "0x60806040523480156200001157600080fd5...",
-};
+}
 ```
 
 Again, this is made for personal, internal use, but may be of value and is documented for that reason. Note that the standard whitespace and escape flags for output are defaulted on for this request.

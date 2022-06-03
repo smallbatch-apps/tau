@@ -1,7 +1,7 @@
 {
-  "name": "tau",
+  "name": "tau-cli",
   "version": "1.0.0",
-  "description": "Truffle Artifact Utilities",
+  "description": "Truffle Artifact Utilities - Command Line Interface",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
